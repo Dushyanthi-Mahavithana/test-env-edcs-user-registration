@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../pages/login.page";
-import { ProductPage } from "../pages/product.page";
-import { UserManagementPage } from "../pages/user.management.page";
-import { MenuActionListPage } from "../pages/menu.action.list.page";
-import { credentials } from "./resources/credentials";
-import { NavBarPage } from "../pages/navbar.page";
-import { testdata } from "./resources/testdata";
+import { LoginPage } from "../../pages/login.page";
+import { ProductPage } from "../../pages/product.page";
+import { UserManagementPage } from "../../pages/user.management.page";
+import { MenuActionListPage } from "../../pages/menu.action.list.page";
+import { credentials } from "../resources/credentials";
+import { NavBarPage } from "../../pages/navbar.page";
+import { testdata } from "../resources/testdata";
 
 test.describe("Menu Action List Page", () => {
   let loginPage: LoginPage;
@@ -27,7 +27,7 @@ test.describe("Menu Action List Page", () => {
         page.getByRole("heading", { name: "Menu Action List" }),
       ).toBeVisible();
       await menuActionListPage.searchMenuActionList(testdata.searchMenuActionList);
-      await expect(page.getByText("338", { exact: false })).toBeVisible();
+      await expect(page.getByText(testdata.searchMenuActionList, { exact: false })).toBeVisible();
     },
   );
 });
